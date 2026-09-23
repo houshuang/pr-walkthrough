@@ -1,11 +1,10 @@
 # PR Walkthrough
 
-A [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skill that generates beautiful, self-contained HTML walkthroughs of pull requests.
+A [Claude Code skill](https://code.claude.com/docs/en/skills) that generates beautiful, self-contained HTML walkthroughs of pull requests.
 
 Instead of reading diffs line by line, get a narrative explanation of *what* changed, *why* it was designed that way, and *how* the pieces connect — presented as a polished technical article.
 
-<!-- TODO: Add screenshot -->
-![Example walkthrough output](examples/screenshot.png)
+![Opening of the reference walkthrough in templates/](examples/screenshot.png)
 
 ## What It Generates
 
@@ -31,21 +30,13 @@ Components include flow diagrams, layer stacks, callout boxes (insight/warning/p
 
 ## Install
 
-Copy the skill into your Claude Code skills directory:
+Clone it into your personal skills directory, where Claude Code finds it in every project:
 
 ```bash
-# Clone the repo
-git clone https://github.com/houshuang/pr-walkthrough.git
-
-# Copy to your Claude Code skills directory
-cp -r pr-walkthrough ~/.claude/skills/pr-walkthrough
+git clone https://github.com/houshuang/pr-walkthrough.git ~/.claude/skills/pr-walkthrough
 ```
 
-Or if you prefer to keep it as a symlink:
-
-```bash
-ln -s /path/to/pr-walkthrough ~/.claude/skills/pr-walkthrough
-```
+To share it with a team through a repository instead, copy `SKILL.md` and `templates/` into that repository's `.claude/skills/pr-walkthrough/` and commit them. A running session picks up the new skill without a restart (unless the `skills` directory itself is new, in which case restart once); run `/skills` to check that `pr-walkthrough` is listed. You can invoke it directly as `/pr-walkthrough`, or just ask in plain language as below.
 
 ## Usage
 
@@ -77,9 +68,9 @@ The skill instructs Claude Code to follow a structured workflow:
 
 The reference template (`templates/reference-walkthrough.html`) serves as both a design system reference and a content example. Claude Code reads it before generating each walkthrough to match the aesthetic and component patterns.
 
-## Examples
+## Example
 
-See the `examples/` directory for sample walkthrough outputs.
+`templates/reference-walkthrough.html` is a complete walkthrough of a fictional PR (a GitHub integration for an app called Compass). Open it in a browser to see the kind of page the skill produces; the screenshot above is its first screen.
 
 ## License
 
